@@ -16,6 +16,7 @@ public class Jogo {
 		else
 			return (this.jogador2);
 	}
+	
 
 	public Tabuleiro getTabuleiro() {
 		return (this.tabuleiro);
@@ -26,7 +27,7 @@ public class Jogo {
 			return false;
 		
 		} else
-			tabuleiro.getPosicoes()[linha][coluna].setSimbolo(simbolo);
+		tabuleiro.getPosicoes()[linha][coluna].setSimbolo(simbolo);
 		tabuleiro.getPosicoes()[linha][coluna].setSituacao(true);
 		return true;
 	}
@@ -41,9 +42,7 @@ public class Jogo {
 	public boolean checaColunas() {
 		int i = 0;
 		for (int j = 0; j < tabuleiro.getTamanhoColunas(); j++) {
-			System.out.println("Verificou coluna");
 			if (tabuleiro.getPosicoes()[i][j].getSituacao() == true) {
-				System.out.println("Verificou Unidade da Coluna");
 				if ((tabuleiro.getPosicoes()[i][j].getSimbolo() == tabuleiro.getPosicoes()[i + 1][j].getSimbolo())
 						&& (tabuleiro.getPosicoes()[i][j].getSimbolo() == tabuleiro.getPosicoes()[i + 2][j]
 								.getSimbolo()))

@@ -24,6 +24,9 @@ public class Tabuleiro{
   public Posicao[][] getPosicoes(){
     return (this.posicoes);
   }
+  public char getElemento(int linha, int coluna) {
+	  return posicoes[linha][coluna].getSimbolo();
+  }
 
   public void printaTabuleiro(){
     System.out.println("   0   1   2");
