@@ -22,7 +22,9 @@ public class Main {
 			int vez = 1;
 			int linha;
 			int coluna;
+			int numJogadas = 0;
 			boolean jogou = true;
+			
 			while (true) {
 				System.out.println("Vez do Player " + vez + ": " + jogo.getJogador(vez).getSimbolo());
 				String jogadas = scanner.nextLine();
@@ -34,19 +36,24 @@ public class Main {
 					linha = Integer.valueOf(arrayy[0]);
 					coluna = Integer.valueOf(arrayy[1]);
 					if (jogo.valorJogado(linha, coluna) == true) {
-						jogada = linha + ", " + coluna;
-						historico.addJogada(vezPlayer(vez), jogada);
 						jogou = jogo.Jogar(linha, coluna, jogo.getJogador(vez).getSimbolo());
+						numJogadas++;
+						String jogadasPos = vezPlayer(vez) + numJogadas;
+						jogada = linha + ", " + coluna;
+						
+						historico.addJogada(vezPlayer(vez),jogada,jogadasPos);
 						jogo.getTabuleiro().printaTabuleiro();
 						if (jogo.checaJogo() == true) {
 							{
 								if (jogo.checaEmpate() == true) {
 									historico.mostrarJogadas();
+									System.out.println("------------------");
 									System.out.println("Empate! Ninguém ganhou :/");
 									System.out.println("\n");
 									reiniciarJogo();
 								} else {
 									historico.mostrarJogadas();
+									System.out.println("------------------");
 									System.out.println("O player " + vez + " ganhou!");
 									System.out.println("Não fique triste player ");
 									System.out.println("\n");
@@ -86,6 +93,7 @@ public class Main {
 		String vezPlayer = "Player " + vez + ": ";
 		return vezPlayer;
 	}
+	
 	private static void reiniciarJogo() {
 		System.out.println("Quer Reiniciar o jogo?");
 		System.out.println("1 - Sim");

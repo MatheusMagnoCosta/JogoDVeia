@@ -2,32 +2,22 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Historico {
-	Map<String, String> mapaJogadas;
 	
-	public Historico() {
-		mapaJogadas = new LinkedHashMap<>();
-	}
-	
-	
+	Map<String,String> mapaJogadas = new LinkedHashMap<String,String>();
+		
 	public Map<String, String> getMapaJogadas() {
 		return mapaJogadas;
 	}
 
-
-	public void setMapaJogadas(Map<String, String> mapaJogadas) {
-		this.mapaJogadas = mapaJogadas;
-	}
-
-
-	public void addJogada(String player, String posicao) {
-		mapaJogadas.put(player, posicao);
+	public void addJogada(String player, String posicao, String numJogadas) {
+		String valor = player + posicao;
+		mapaJogadas.put(numJogadas, valor);
 	}
 	
 	public void mostrarJogadas() {
-		
-		System.out.println("HISTÓRICO DE JOGADAS");
-		for(String pos : mapaJogadas.keySet()) {
-			System.out.println(pos + " " + mapaJogadas.get(pos));
+		System.out.println("HISTÓRICO");
+		for(String key : mapaJogadas.keySet()) {
+			System.out.println(mapaJogadas.get(key));
 		}
 	}
 }
